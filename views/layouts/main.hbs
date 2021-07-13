@@ -6,8 +6,19 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>SMS Node</title>
+
+    {{!-- BOOTSWATCH --}}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/lux/bootstrap.min.css">
+
+    {{!-- TEXT SECURITY CSS --}}
+    <link rel="stylesheet" href="https://raw.githubusercontent.com/noppa/text-security/master/dist/text-security.css">
+
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
-{{{body}}}
+{{>navigation}}
+<div class="container p-4">
+    {{{body}}}
+</div>
 </body>
 </html>
