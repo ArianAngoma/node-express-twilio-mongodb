@@ -1,10 +1,15 @@
 const {Router} = require('express');
-const {main, sendSMS} = require("../controllers/main");
+const {main, sendSMS, receiveMessage} = require("../controllers/main");
 
 const router = Router();
 
+// Ruta principal
 router.get('/', main);
 
-router.post('/send-sms', sendSMS)
+// Enviar sms
+router.post('/send-sms', sendSMS);
+
+// Recivir sms
+router.post('/sms', receiveMessage)
 
 module.exports = router;
