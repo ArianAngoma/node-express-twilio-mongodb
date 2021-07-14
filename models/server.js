@@ -53,7 +53,10 @@ class Server {
             layoutsDir: path.join(this.app.get('views'), 'layouts'),
             partialsDir: path.join(this.app.get('views'), 'partials'),
             defaultLayout: 'main',
-            extname: '.hbs'
+            extname: '.hbs',
+
+            // Helper para ocultar número destino
+            helpers: require('../helpers/hide-number')
         }))
 
         this.app.set('view engine', 'hbs');
