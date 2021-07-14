@@ -15,16 +15,17 @@
 
     <div class="col-md-8">
         {{#if messages}}
-            <ul class="list-group" style="height: 70vh; overflow-y: auto;">
+            <ul class="list-group" style="height: 70vh; overflow-y: auto;" id="messages">
                 {{#each messages}}
-                    <div class="list-group-item list-group-item-info list-group-item-action">
+                    <li class="list-group-item list-group-item-info list-group-item-action">
                         <p>{{msg}}</p>
                         {{!--<span>{{hideNumber to}}</span>
                         <span>{{hideNumber from}}</span>--}}
 
+                        <span>Id:{{_id}}</span>
                         <span>Para:{{to}}</span>
                         <span>De:{{from}}</span>
-                    </div>
+                    </li>
                 {{/each}}
             </ul>
         {{else}}

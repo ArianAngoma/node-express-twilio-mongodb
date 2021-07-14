@@ -1,12 +1,9 @@
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 const {sendMessage} = require('../twilio/send-sms');
-const Message = require('../models/message')
+const Message = require('../models/message');
 
 const main = async (req, res) => {
-    const messages = await Message.find().lean();
-    messages.forEach(message => {
-        console.log(message.msg);
-    })
+    const messages = await Message.find().sort('-createdAt').lean();
     res.render('index', {
         messages
     })
@@ -28,7 +25,8 @@ const sendSMS = async (req, res) => {
 }
 
 const receiveMessage = async (req, res) => {
-    const {To: to, From: from, Body: msg} = req.body;
+    // Coloco datos por defecto por que me consume saldo enviar mensajes
+    const {To: to = '+16672136813', From: from = '+51983416698', Body: msg = 'Hola, estoy aqui 4'} = req.body;
     console.log({to, from, msg});
 
     const message = new Message({
@@ -37,6 +35,9 @@ const receiveMessage = async (req, res) => {
         from
     })
     await message.save();
+
+    // Emitir evento para el cliente - enviar el nuevo mensaje
+    global.io.emit('new_message', message);
 
     const twiml = new MessagingResponse();
 
