@@ -9,7 +9,7 @@ router.get('/', main);
 // Enviar sms
 router.post('/send-sms', sendSMS);
 
-// Recivir sms
+// Recivir sms - Socket
 router.post('/sms', receiveMessage)
 
 module.exports = router;
