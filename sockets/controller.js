@@ -1,5 +1,6 @@
 const {Socket} = require("socket.io");
 
+// Usuario conectado
 const socketController = (socket = new Socket(), io) => {
     console.log('Conectado', socket.id)
 
