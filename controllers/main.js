@@ -11,6 +11,8 @@ const main = async (req, res) => {
 
 const sendSMS = async (req, res) => {
     const {msg, phone} = req.body;
+
+    // Enviar mensaje mediante Twilio
     const result = await sendMessage(msg, phone);
 
     const message = new Message({
