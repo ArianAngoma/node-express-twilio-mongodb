@@ -75,6 +75,7 @@ class Server {
     }
 
     sockets() {
+        // Servidor iniciado con Sockets
         this.io.on("connection", (socket) => socketController(socket, this.io));
     }
 
