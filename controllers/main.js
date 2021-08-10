@@ -21,6 +21,7 @@ const sendSMS = async (req, res) => {
         from: process.env.TWILIO_NUMBER_PHONE
     })
 
+    // Guardar msg en la DB
     await message.save()
 
     res.redirect('/');
